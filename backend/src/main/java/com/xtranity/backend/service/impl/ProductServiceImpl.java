@@ -1,0 +1,32 @@
+package com.xtranity.backend.service.impl;
+
+
+import com.xtranity.backend.dto.ProductDto;
+import com.xtranity.backend.entity.Product;
+import com.xtranity.backend.repository.ProductRepository;
+import com.xtranity.backend.service.IProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
+
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class ProductServiceImpl implements IProductService {
+    private final ProductRepository productRepository;
+    @Override
+    public List<ProductDto> getProducts() {
+        // Sample implementation, replace with actual logic
+        return productRepository.findAll().stream().map(this::transformToDto)
+                .collect(Collectors.toList());
+    }
+    private ProductDto transformToDto(Product product) {
+
+        ProductDto productDto = new ProductDto();
+        BeanUtils.copyProperties(product, productDto);
+        return productDto;
+    }
+}
