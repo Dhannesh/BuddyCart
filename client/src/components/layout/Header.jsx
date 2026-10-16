@@ -13,6 +13,7 @@ import {
   FiMenu,
   FiX,
 } from "react-icons/fi";
+// import { ModeToggle } from "./mode-toggle";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -181,6 +182,7 @@ export default function Header() {
               <FiUser className="size-4" />
               Account
             </Link>
+            {/* <ModeToggle /> */}
           </nav>
         )}
       </div>
